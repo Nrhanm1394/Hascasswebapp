@@ -1,38 +1,35 @@
-import Topbar from "./components/topbar/Topbar";
-import Sidebar from "./components/sidebar/Sidebar";
-import Home from "./page/home/Home";
-import Signin from "./page/signin/Signin";
+import Signin from './components/Signin';
 // import Login from "./page/login/Login";
-import { makeStyles } from '@material-ui/core/styles';
+import { BrowserRouter ,Route,Switch,Redirect} from 'react-router-dom';
+import Dashboard from './components/sidebar/Dashboard';
 
-const useStyles = makeStyles((theme) =>({
-  container : {
-    display: 'flex',
-    marginTop: '10px'
-  }
-
-}));
+const NotFound = () => <div>NotFound page</div>
 
 function App() { 
-  const classes = useStyles();
   const token = localStorage.getItem('accessToken');
 
   if(!token) {
     return <Signin />
   }
   return ( 
-    <div>
-      {/* <main className="App">
-        <Login/>
-      </main> */}
-      <Topbar/> 
-
-      <div className={classes.container}>
-        <Sidebar/>
-        <Home/>
-      </div>
-
-    </div>
+      <BrowserRouter>
+          <Switch>
+          <Route path="/dashboard">
+            <Dashboard/>
+          </Route>
+          <Route path="/">
+            <Dashboard />
+          </Route>
+            <Route  path="/">
+            <Redirect to="/dashboard"></Redirect>
+            </Route>
+            <Route>
+              <NotFound/>
+            </Route>
+          </Switch>
+      </BrowserRouter>
+      
+      
   );
  
 }

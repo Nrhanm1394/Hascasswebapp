@@ -9,29 +9,33 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import swal from 'sweetalert';
+import Topbar from './Topbar';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop:'100px',
-    height: '10vh',
+    height: '100%',
     justifyContent:'center',
-    
+    backgroundImage: 'url(https://source.unsplash.com/random)'
 
   },
   paper: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    alignContent:'center'
+    alignContent:'center',
+    
     
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: '#000',
   },
   form: {
     width: '100%',
+    
     
   },
   submit: {
@@ -70,7 +74,7 @@ export default function Signin() {
       .then((value) => {
         localStorage.setItem('accessToken', response['accessToken']);
         localStorage.setItem('user', JSON.stringify(response['user']));
-        window.location.href = "/profile";
+        window.location.href = "/Dashboard";
       });
     } else {
       swal("Failed", response.message, "error");
@@ -78,8 +82,10 @@ export default function Signin() {
   }
 
   return (
+    <div>
+      <Topbar/>
     <Grid container className={classes.root} >
-      <CssBaseline />
+      <CssBaseline/>
       <Grid  component={Paper} >
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -123,5 +129,6 @@ export default function Signin() {
         </div>
       </Grid>
     </Grid>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import {NotificationsNone,Language,Settings} from '@material-ui/icons';
-import {Menu,MenuItem,IconButton,Avatar } from '@material-ui/core';
+import {Language} from '@material-ui/icons';
+import {Menu,MenuItem,IconButton,Avatar,CssBaseline } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -10,11 +10,11 @@ const useStyles = makeStyles((theme) =>({
         display: 'block',
         margin: 'auto',
         width: '100%',
-        height: '50px',
+        height: '60px',
         position: 'sticky',
         top: '0',
         zIndex: '999',
-        backgroundColor: '#FFFFFF',  
+        backgroundColor: '#1A2938',  
 
         
 
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) =>({
       logo : {
         fontWeigth : 'bold',
         fontSize: '30px',
-        color: 'rgb(4, 4, 71)',
+        color: '#FFFFFF',
         cursor: 'pointer'
       },
       topRight :{
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) =>({
         position: 'relative',
         cursor: 'pointer',
         marginRight: '10px',
-        color: '#555 '
+        color: '#DCE3EF '
       },
       topIconBadge : {
         width: '15px',
@@ -95,25 +95,14 @@ export default function Topbar() {
 
   return (
     <div className={classes.root}>
+      <CssBaseline/>
         <div className={classes.topbarWrapper}>
         <div className="topLeft">
             <span className={classes.logo}>Hescass</span>
         </div>
         <div className={classes.topRight}>
-        <div className={classes.topbarIconContainer}>
-                <NotificationsNone/>
-                <span className={classes.topIconBadge}>2</span>
-
-            </div>
             <div className={classes.topbarIconContainer}>
                 <Language/>
-            
-
-            </div>
-            <div className={classes.topbarIconContainer}>
-                <Settings/>
-             
-
             </div>
             <div>
             <IconButton onClick={handleMenu} color="inherit">

@@ -1,8 +1,8 @@
 
-import Chart from "../../components/chart/Chart"
-import FeaturedInfo from "../../components/featuredInfo/FeaturedInfo"
-import { userData } from "../../dummyData"
+import Chart from "./Chart"
+import FeaturedInfo from "./FeaturedInfo"
 import { makeStyles } from '@material-ui/core/styles';
+import { userData } from "../dummyData";
 
 const useStyles = makeStyles((theme) =>({
   home: {
